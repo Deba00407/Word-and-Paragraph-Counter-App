@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Word and Paragraph Counter</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Word and Paragraph Counter</h1>
+      <form method="POST" action="/">
+        <textarea id="data" name="data" placeholder="Enter your text here..">
+{{ data }}</textarea
+        >
+        <button type="submit" id="submit-button">Submit</button>
+      </form>
+
+      {% if count_words or count_paras or count_chars %}
+      <div id="output">
+        {% if count_words is not none %}
+        <p><strong>Number of words:</strong> {{ count_words }}</p>
+        {% endif %} {% if count_paras is not none %}
+        <p><strong>Number of paragraphs:</strong> {{ count_paras }}</p>
+        {% endif %} {% if count_chars is not none %}
+        <p><strong>Number of characters:</strong> {{ count_chars }}</p>
+        {% endif %} {% if total_char_count is not none %}
+        <p>
+          <strong
+            >Total number of characters (including whitespaces and
+            newline):</strong
+          >
+          {{ total_char_count }}
+        </p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
